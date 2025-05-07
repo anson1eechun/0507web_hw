@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,6 @@
         }
 
         body {
-            background-color: #B52A30;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -26,39 +25,42 @@
         /* 背景圖案 */
         .background-pattern {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 70%;
+            height: 0%;
             z-index: 0;
+            top: 0%;
+            left: -20%;
         }
 
         .pattern-line {
             position: absolute;
             background-color: transparent;
+            transform: scale(1.5);
         }
 
         .blue-lines-left {
-            top: 10%;
-            left: 25%;
+            top: 15%;
+            left: 30%;
         }
 
         .orange-lines-right {
-            top: 10%;
-            right: 25%;
+            top: 15%;
+            right: 30%;
         }
 
         .blue-lines-bottom {
-            bottom: 15%;
-            right: 40%;
+            bottom: 20%;
+            right: 42%;
         }
 
         .circle-outline {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border: 1px solid rgba(255, 165, 0, 0.3);
             border-radius: 50%;
-            bottom: 20%;
-            left: 15%;
+            bottom: 25%;
+            left: 20%;
         }
 
         .login-container {
@@ -67,7 +69,7 @@
             border-radius: 6px;
             overflow: hidden;
             width: 100%;
-            max-width: 840px;
+            max-width: 900px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 1;
             position: relative;
@@ -75,7 +77,7 @@
 
         .login-left {
             width: 50%;
-            padding: 30px;
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
             border-right: 1px solid #eee;
@@ -83,19 +85,19 @@
 
         .login-right {
             width: 50%;
-            padding: 30px;
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .logo-container {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .logo-image {
             width: 100%;
-            max-width: 320px;
+            max-width: 400px;
             margin-bottom: 5px;
         }
 
@@ -106,6 +108,9 @@
 
         .login-form {
             width: 100%;
+            transform: scale(1.1);
+            transform-origin: center;
+            margin: 10px 0;
         }
 
         .form-group {
@@ -144,6 +149,7 @@
         .right-content p {
             margin-bottom: 15px;
             font-size: 15px;
+            font-weight: bold;
         }
 
         .nid-link {
@@ -155,6 +161,7 @@
         .nid-link span {
             margin-right: 5px;
             font-size: 15px;
+            font-weight: bold;
         }
 
         .nid-logo {
@@ -200,6 +207,9 @@
             position: relative;
             z-index: 1;
             width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            bottom: 0;
         }
 
         .site-footer a {
@@ -240,23 +250,22 @@
     </style>
 </head>
 <body>
-<!-- 背景圖案 -->
+<!-- 移除背景圖案相關元素 -->
+
 <div class="background-pattern">
-    <img src="ileanlogo.jpg" alt="背景圖案">
-
-
-    <div class="circle-outline"></div>
+    <img src="ileanlogo.jpg">
 </div>
 
 <div class="login-container">
     <div class="login-left">
         <div class="logo-container">
             <img src="/moodle4_log.jpg" alt="iLearn Logo" class="logo-image">
+            <div class="university-name"></div>
         </div>
 
         <form class="login-form" id="loginForm">
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="學號" required>
+                <input type="text" id="username" name="username" placeholder="帳號" required>
             </div>
 
             <div class="form-group">
@@ -290,6 +299,11 @@
     </div>
 </div>
 
+<div class="site-footer">
+    <p>If you continue browsing this website, you agree to our policies:</p>
+    <a href="#">隱私及使用條款聲明</a>
+    <button class="continue-btn">Continue</button>
+</div>
 
 <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -313,6 +327,7 @@
 
     document.querySelector('.continue-btn').addEventListener('click', function() {
         alert('這是Cookie同意按鈕的練習功能');
+        this.parentElement.style.display = 'none';
     });
 </script>
 </body>
