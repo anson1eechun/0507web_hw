@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逢甲大學 iLearn 登入</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #B52A30;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景圖案 */
+        .background-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .pattern-line {
+            position: absolute;
+            background-color: transparent;
+        }
+
+        .blue-lines-left {
+            top: 10%;
+            left: 25%;
+        }
+
+        .orange-lines-right {
+            top: 10%;
+            right: 25%;
+        }
+
+        .blue-lines-bottom {
+            bottom: 15%;
+            right: 40%;
+        }
+
+        .circle-outline {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 50%;
+            bottom: 20%;
+            left: 15%;
+        }
+
+        .login-container {
+            display: flex;
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 840px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1;
+            position: relative;
+        }
+
+        .login-left {
+            width: 50%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #eee;
+        }
+
+        .login-right {
+            width: 50%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo-image {
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 5px;
+        }
+
+        .university-name {
+            color: #7A292E;
+            font-size: 14px;
+        }
+
+        .login-form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .login-button {
+            width: 100%;
+            background-color: #9E0B0F;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #7A0B0F;
+        }
+
+        .right-content {
+            color: #333;
+        }
+
+        .right-content p {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .nid-link {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .nid-link span {
+            margin-right: 5px;
+            font-size: 15px;
+        }
+
+        .nid-logo {
+            height: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            margin-top: 40px;
+            font-size: 14px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #9E0B0F;
+            text-decoration: none;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .cookie-icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 3px;
+        }
+
+        .cookie-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .site-footer {
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .site-footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .continue-btn {
+            background-color: transparent;
+            border: none;
+            color: orange;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+
+        .continue-btn:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                width: 95%;
+            }
+
+            .login-left, .login-right {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .login-left {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 背景圖案 -->
+<div class="background-pattern">
+    <img src="ileanlogo.jpg" alt="背景圖案">
+
+
+    <div class="circle-outline"></div>
+</div>
+
+<div class="login-container">
+    <div class="login-left">
+        <div class="logo-container">
+            <img src="/moodle4_log.jpg" alt="iLearn Logo" class="logo-image">
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="學號" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="密碼" required>
+            </div>
+
+            <button type="submit" class="login-button">登入</button>
+        </form>
+    </div>
+
+    <div class="login-right">
+        <div class="right-content">
+            <p>請使用NID帳號/密碼登入平台。</p>
+
+            <div class="nid-link">
+                <span>欲變更NID密碼，請連結至</span>
+                <img src="/nidlogo.png" alt="NID Logo" class="nid-logo">
+            </div>
+
+            <div class="footer-links">
+                <a href="#">正體中文 (zh_tw)</a>
+                <div class="cookie-info">
+                    <svg class="cookie-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="#9E0B0F" stroke-width="2"/>
+                        <text x="12" y="16" text-anchor="middle" fill="#9E0B0F" font-size="12">i</text>
+                    </svg>
+                    <a href="#">Cookie使用資訊</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // 在實際的釣魚網站中，這裡會收集用戶輸入的資料
+        // 但在教學練習中，我們只顯示警告
+        alert('這是一個練習用網頁！在真實環境中，請勿在未經確認的網站輸入您的帳號密碼！');
+
+        console.log('用戶輸入的資料：', {
+            username,
+            password
+        });
+
+        // 重置表單
+        this.reset();
+    });
+
+    document.querySelector('.continue-btn').addEventListener('click', function() {
+        alert('這是Cookie同意按鈕的練習功能');
+    });
+</script>
+</body>
+</html>
